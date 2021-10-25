@@ -34,7 +34,7 @@ function variableNotScopes() {
 function shortOperators() {
     let number = 1;
     let string = "I'm a string."
-    let bug;
+    let bug; // I am undefined (~scary~; evaluates as false)
 
     console.log(number || string);  // >1
     console.log(number || bug);  // >1
@@ -43,13 +43,25 @@ function shortOperators() {
     console.log(number && bug);  // >undefined
     console.log(bug && number);  // >undefined
 
-    // with OR (||), short-circuiting is possible
-    // if the first value is not falsy, it will therefore be returned
-    // regardless of the second value.
+    // experiments
+    console.log("Experiments:");
+    console.log(false || true);  // >true
+    console.log(true || false);  // >true
+    console.log(false || bug);  // >undefined
+    console.log(bug || false);  // >false !!
+    console.log(false && true);  // >false !! (imo, this should return undefined)
+    console.log(bug && false);  // >undefined
+    console.log(true && false);  // >false !!
+    console.log(true && "bazinga");  // >bazinga
+    console.log(false && "bazinga");  // >false
+    console.log(false || false || true || "bazinga");  // >true
+    console.log(true && true && false);  // >false
+    console.log(true && true && bug);  // >undefined
 
-    // with AND (&&), it's a similar story
-    // if the first value is falsy, the expression will return undefined regardless of the second
-    // i.e. it short-circuits to a false
+    // these expressions returns 'where' they fail (if they fail)
+    // otherwise, they return the last evaluated expression to provide a certain result
+    // short-circuiting occurs where an expression has sufficient info when partially executed to evaluate its result
+    // i.e: an expression comparing: True OR False does not bother checking its latter half
 }
-// shortOperators();
+shortOperators();
 
