@@ -12,7 +12,7 @@ function forOfVsForIn() {
     // and the other gives you the value of the object's iterables
 
 }
-forOfVsForIn();
+// forOfVsForIn();
 
 function variableNotScopes() {
     let a = 0;  // 'block' scope
@@ -31,4 +31,25 @@ function variableNotScopes() {
 // throw in 'shift' to go the other way
 // ...use 'right-ctrl', it's easier
 
+function shortOperators() {
+    let number = 1;
+    let string = "I'm a string."
+    let bug;
+
+    console.log(number || string);  // >1
+    console.log(number || bug);  // >1
+    console.log(bug || number);  // >1
+    console.log(number && string);  // >"I'm a string."
+    console.log(number && bug);  // >undefined
+    console.log(bug && number);  // >undefined
+
+    // with OR (||), short-circuiting is possible
+    // if the first value is not falsy, it will therefore be returned
+    // regardless of the second value.
+
+    // with AND (&&), it's a similar story
+    // if the first value is falsy, the expression will return undefined regardless of the second
+    // i.e. it short-circuits to a false
+}
+// shortOperators();
 
